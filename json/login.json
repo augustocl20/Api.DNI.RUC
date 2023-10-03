@@ -1,0 +1,14 @@
+[
+    {
+        "Usuario": "demo1",
+        "Contraseña": "1234"
+    },
+    {
+        "Usuario": "demo2",
+        "Contraseña": "12345"
+    },
+    {
+        "Usuario": "demo3",
+        "Contraseña": "123456"
+    }
+]

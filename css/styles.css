@@ -1,0 +1,42 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color:black;
+  color: aliceblue;
+}
+
+.custom-input {
+  border-radius: 10px;
+}
+
+.custom-button {
+  border-radius: 10px;
+}
+
+.container.custom-container {
+  max-width: 50%; /* Cambia el valor según tus preferencias */
+  margin: 0 auto; /* Centra el contenedor */
+}
+
+
+.card {
+  border: none;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+.custom-image {
+  max-width: 30%;
+  height: auto;
+}
+
+
+.fade-in {
+  animation: fadeIn 1s ease-in-out forwards;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  to {
+      opacity: 1;
+  }
+}
