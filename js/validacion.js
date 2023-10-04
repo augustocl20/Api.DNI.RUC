@@ -6,7 +6,7 @@ document.getElementById("iniciar-sesion").addEventListener("click", function (ev
   var usuarioIngresado = document.getElementById("Usuario").value;
   var contraseñaIngresada = document.getElementById("Contraseña").value;
   // Realizar una solicitud para cargar los datos de usuario desde el archivo JSON
-  fetch("../json/login.json")
+  fetch("./json/login.json")
     .then(function (response) {
       return response.json();
     })
@@ -25,7 +25,7 @@ document.getElementById("iniciar-sesion").addEventListener("click", function (ev
 
       // Redirigir al usuario a otra página si las credenciales son correctas
       if (credencialesCorrectas) {
-        window.location.href = "../index.html";
+        window.location.href = "principal.html";
       } else {
         alert("Credenciales incorrectas. Por favor, inténtelo de nuevo.");
       }
