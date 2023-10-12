@@ -7,8 +7,8 @@ async function consultarDNI() {
     alert('Por favor, ingrese un DNI válido de 8 dígitos.');
     return;
   }
-
-  const apiUrl = `https://dniruc.apisperu.com/api/v1/dni/${dni}?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6IjEzMjgyMDZAc2VuYXRpLnBlIn0.GuUxUrQWeY6P9H-0zvVkKH59Wo80HwZ5OR-VfuuQ_E4`;
+  const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InVzZXJkYXJrMDEwMkBnbWFpbC5jb20ifQ.27-w0udsBopTx7R4TwcxZYVn66y9UmsQH63umQD3KSQ';
+  const apiUrl = `https://dniruc.apisperu.com/api/v1/dni/${dni}?token=${token}`;
 
   try {
     const response = await fetch(apiUrl);
