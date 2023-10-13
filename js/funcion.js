@@ -1,4 +1,5 @@
-// Función para consultar el DNI a través de una API
+
+
 async function consultarDNI() {
   const dni = document.getElementById('dniInput').value;
 
@@ -7,26 +8,27 @@ async function consultarDNI() {
     alert('Por favor, ingrese un DNI válido de 8 dígitos.');
     return;
   }
-
-  const apiUrl = `https://dniruc.apisperu.com/api/v1/dni/${dni}?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6IjEzMjgyMDZAc2VuYXRpLnBlIn0.GuUxUrQWeY6P9H-0zvVkKH59Wo80HwZ5OR-VfuuQ_E4`;
-
+  const token = '735d42a68c4952e395b772cb85f3e605b981179622e3e0a87164148d98435ce5';
+  const apii = `https://apiperu.dev/api/dni/${dni}?api_token=${token}`;
   try {
-    const response = await fetch(apiUrl);
-    const data = await response.json();
-
-    if (data.error) {
-      alert('No se pudo obtener la información del DNI. Por favor, intente nuevamente.');
-      return;
-    }
-
-    mostrarDatos(data);
+    // Realiza la solicitud a la API
+    fetch(apii)
+      .then(response => response.json())
+      .then(data => {
+        console.log(data)
+        // Asegúrate de que las propiedades sean correctas
+        mostrarDatos(data);
+      })
+      .catch(error => {
+        console.error("Error al cargar los datos de la API: " + error);
+      });
   } catch (error) {
     console.error('Error:', error);
     alert('Ocurrió un error al consultar el DNI. Por favor, intente nuevamente más tarde.');
   }
 }
 
-// Función para mostrar los datos del DNI en el DOM
+
 function mostrarDatos(data) {
   // Obtener elementos del DOM para mostrar los datos
   const apellidoMaternoElement = document.getElementById('apellidoMaterno');
@@ -36,10 +38,10 @@ function mostrarDatos(data) {
   const resultadosDiv = document.getElementById('resultados');
 
   // Actualizar el contenido de los elementos con los datos del DNI
-  apellidoMaternoElement.textContent = data.apellidoMaterno;
-  apellidoPaternoElement.textContent = data.apellidoPaterno;
-  dniElement.textContent = data.dni;
-  nombresElement.textContent = data.nombres;
+  apellidoMaternoElement.textContent = data.data.apellido_materno;
+  apellidoPaternoElement.textContent = data.data.apellido_paterno;
+  dniElement.textContent = data.data.numero;
+  nombresElement.textContent = data.data.nombres;
 
   // Obtener la hora actual
   const now = new Date();
@@ -70,4 +72,3 @@ setInterval(actualizarReloj, 1000);
 
 // Llamar a la función para mostrar la hora actual inmediatamente
 actualizarReloj();
-
